@@ -1,0 +1,109 @@
+{
+	"meta": {
+		"generatedAt": "2025-06-23T17:33:22.409Z",
+		"tasksAnalyzed": 12,
+		"totalTasks": 12,
+		"analysisCount": 12,
+		"thresholdScore": 5,
+		"projectName": "Taskmaster",
+		"usedResearch": true
+	},
+	"complexityAnalysis": [
+		{
+			"taskId": 1,
+			"taskTitle": "Setup Next.js Project with Core Dependencies",
+			"complexityScore": 6,
+			"recommendedSubtasks": 7,
+			"expansionPrompt": "Break down the setup of a Next.js 14 project with TypeScript, ShadCN/UI, Tailwind CSS, ethers.js/viem, wallet connection libraries, project structure, environment variables, and initial layout into clear, sequential subtasks.",
+			"reasoning": "This task involves multiple setup steps across frontend, blockchain integration, and project structure. Each dependency (Next.js, TypeScript, ShadCN/UI, Tailwind, ethers.js/viem, wallet libraries) requires configuration and testing. Setting up environment variables and a basic layout adds further complexity, but the task is well-scoped and follows established best practices[1][2]."
+		},
+		{
+			"taskId": 2,
+			"taskTitle": "Develop Portfolio Manager Executor Smart Contract",
+			"complexityScore": 8,
+			"recommendedSubtasks": 8,
+			"expansionPrompt": "Decompose the development of an ERC-7579 compatible smart contract for portfolio management into subtasks: contract design, Supra price feed integration, asset allocation storage, NAV calculation, metadata management, security patterns, deployment, and testing.",
+			"reasoning": "Smart contract development with external price feed integration, secure storage, NAV calculations, and OpenZeppelin security patterns is complex. It requires careful design, integration, and thorough testing, especially for DeFi and compliance requirements."
+		},
+		{
+			"taskId": 3,
+			"taskTitle": "Integrate Forte Rules Engine for NAV Protection",
+			"complexityScore": 7,
+			"recommendedSubtasks": 6,
+			"expansionPrompt": "Expand the integration of Forte Rules Engine for NAV protection into subtasks: policy configuration, API endpoint creation, contract subscription, error handling, user messaging, and enforcement testing.",
+			"reasoning": "This task involves integrating an external compliance engine, creating APIs, subscribing contracts, and handling policy enforcement with user feedback. It requires backend, smart contract, and frontend coordination."
+		},
+		{
+			"taskId": 4,
+			"taskTitle": "Implement ERC-7579 Account Creation with Rhinestone SDK",
+			"complexityScore": 7,
+			"recommendedSubtasks": 7,
+			"expansionPrompt": "Break down the implementation of ERC-7579 account creation with Rhinestone SDK into subtasks: SDK integration, API endpoint, module installation, progress indicators, storage, error handling, and testing.",
+			"reasoning": "Integrating a third-party SDK for smart account deployment, module installation, and robust error handling involves multiple moving parts and requires both backend and frontend work."
+		},
+		{
+			"taskId": 5,
+			"taskTitle": "Build Risk Assessment Questionnaire System",
+			"complexityScore": 5,
+			"recommendedSubtasks": 5,
+			"expansionPrompt": "Divide the risk assessment questionnaire system into subtasks: form UI, validation logic, progress indicators, data storage, and UI/UX enhancements.",
+			"reasoning": "This is a standard frontend form with validation and local storage, but requires attention to UX and data handling. Complexity is moderate."
+		},
+		{
+			"taskId": 6,
+			"taskTitle": "Integrate OpenAI GPT-4 for AI Portfolio Generation",
+			"complexityScore": 6,
+			"recommendedSubtasks": 6,
+			"expansionPrompt": "Expand the AI portfolio generation integration into subtasks: API endpoint, prompt engineering, OpenAI API integration, error handling, rate limiting, and response formatting.",
+			"reasoning": "Integrating GPT-4 for personalized recommendations involves backend API work, prompt design, error handling, and ensuring reliable user experience."
+		},
+		{
+			"taskId": 7,
+			"taskTitle": "Create Portfolio Dashboard with Real-time Valuations",
+			"complexityScore": 7,
+			"recommendedSubtasks": 7,
+			"expansionPrompt": "Break down the portfolio dashboard creation into subtasks: real-time price feed integration, valuation API, allocation display, drift calculation, performance metrics, auto-refresh, and dashboard UI.",
+			"reasoning": "Building a real-time dashboard with live data, calculations, and professional UI requires both backend and frontend expertise, as well as data visualization."
+		},
+		{
+			"taskId": 8,
+			"taskTitle": "Implement Complete User Onboarding Flow",
+			"complexityScore": 8,
+			"recommendedSubtasks": 8,
+			"expansionPrompt": "Decompose the user onboarding flow into subtasks: wallet connection, risk assessment, AI recommendation, smart account creation, progress tracking, error handling, educational tooltips, and UI/UX design.",
+			"reasoning": "This is a complex, multi-step flow integrating several systems (wallet, AI, smart contracts) with robust error handling and user experience requirements."
+		},
+		{
+			"taskId": 9,
+			"taskTitle": "Build NAV Protection Testing Interface",
+			"complexityScore": 6,
+			"recommendedSubtasks": 6,
+			"expansionPrompt": "Expand the NAV protection testing interface into subtasks: trade simulation UI, NAV calculation, policy decision logic, user feedback messaging, visual indicators, and educational content.",
+			"reasoning": "This task involves real-time calculations, user interaction, and clear feedback, but is focused in scope and primarily frontend-driven."
+		},
+		{
+			"taskId": 10,
+			"taskTitle": "Implement Manual Portfolio Rebalancing System",
+			"complexityScore": 7,
+			"recommendedSubtasks": 7,
+			"expansionPrompt": "Break down the manual rebalancing system into subtasks: rebalancing UI, trade calculation logic, smart contract execution, transaction preview, PancakeSwap integration prep, history tracking, and drift settings.",
+			"reasoning": "Manual rebalancing requires accurate calculations, smart contract interaction, UI for trade previews, and integration points for future features."
+		},
+		{
+			"taskId": 11,
+			"taskTitle": "Add Advanced Portfolio Analytics and Monitoring",
+			"complexityScore": 8,
+			"recommendedSubtasks": 8,
+			"expansionPrompt": "Expand advanced analytics and monitoring into subtasks: performance tracking, drift alerts, insights generation, comparison tools, notification system, report export, filtering, and date range selection.",
+			"reasoning": "Advanced analytics involves complex data processing, visualization, alerting, and reporting, requiring both backend and frontend sophistication."
+		},
+		{
+			"taskId": 12,
+			"taskTitle": "Polish UI/UX and Add Professional Finishing Touches",
+			"complexityScore": 6,
+			"recommendedSubtasks": 7,
+			"expansionPrompt": "Divide UI/UX polishing into subtasks: animations, error handling, loading states, accessibility, responsive design, color/typography, tooltips/help text, and performance optimization.",
+			"reasoning": "UI/UX polishing covers a broad range of improvements, each requiring attention to detail, but follows established patterns and best practices."
+		}
+	]
+}

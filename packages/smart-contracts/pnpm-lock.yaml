@@ -4,6 +4,9 @@ dependencies:
   '@rhinestone/modulekit':
     specifier: ^0.5.1
     version: 0.5.1(ethers@5.8.0)(hardhat@2.25.0)(lodash@4.17.21)(typechain@5.2.0)(typescript@5.8.3)
+  forge-std:
+    specifier: ^1.1.2
+    version: 1.1.2
 
 packages:
 
@@ -1829,6 +1832,10 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       is-callable: 1.2.7
+    dev: false
+
+  /forge-std@1.1.2:
+    resolution: {integrity: sha512-Wfb0iAS9PcfjMKtGpWQw9mXzJxrWD62kJCUqqLcyuI0+VRtJ3j20XembjF3kS20qELYdXft1vD/SPFVWVKMFOw==}
     dev: false
 
   /form-data-encoder@2.1.4:

@@ -30,3 +30,5 @@ tasks/
 
 .cursor/
 prd.txt
+.mcp.json
+.claude

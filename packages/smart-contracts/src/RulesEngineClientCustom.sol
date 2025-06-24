@@ -24,8 +24,8 @@ abstract contract RulesEngineClientCustom is RulesEngineClient {
 		_invokeRulesEngine(encoded);
 	}
 
-	modifier checkRulesBefore_executeRebalance(address smartAccount, RebalanceAction[] memory actions, uint256 portfolioValueAfter) {
-		bytes memory encoded = abi.encodeWithSelector(msg.sig,smartAccount, actions, portfolioValueAfter);
+	modifier checkRulesBefore_executeRebalance(address smartAccount, RebalanceAction[] memory actions) {
+		bytes memory encoded = abi.encodeWithSelector(msg.sig,smartAccount, actions);
 		_invokeRulesEngine(encoded);
 		_;
 	}

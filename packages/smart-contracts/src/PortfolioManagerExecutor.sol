@@ -2060,7 +2060,7 @@ contract PortfolioManagerExecutor is ERC7579ExecutorBase, RulesEngineClientCusto
      * @param smartAccount The smart account address
      * @param actions Array of rebalance actions to execute
      */
-    function _executeRebalance(address smartAccount, RebalanceAction[] memory actions) internal checkRulesBefore_executeRebalance(smartAccount, actions, portfolioValueAfter) {
+    function _executeRebalance(address smartAccount, RebalanceAction[] memory actions) internal checkRulesBefore_executeRebalance(smartAccount, actions) {
         if (actions.length == 0) return;
 
         uint256 successfulSwaps = 0;

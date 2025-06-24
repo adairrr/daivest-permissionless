@@ -1,245 +1,115 @@
 # Daivest
 
-An AI-powered decentralized portfolio management platform built on Account Abstraction (ERC-7579) with automated rebalancing and risk protection through the Forte Rules Engine.
+A proof-of-concept portfolio management platform using Account Abstraction (ERC-7579) and automated smart contract modules.
 
-## 🌟 Overview
+## Concept
 
-Daivest revolutionizes portfolio management by combining:
+This hackathon project demonstrates:
+- Modular smart accounts for portfolio management
+- Target allocation-based rebalancing
+- Trade execution through PancakeSwap 
+- Portfolio protection using Forte Rules Engine
+- Integration with Supra oracles for price feeds
+- Built on BNB Chain testnet
 
-- **Account Abstraction (ERC-7579)**: Modular smart accounts for seamless user experience
-- **AI-Powered Analytics**: Intelligent portfolio optimization and risk assessment
-- **Automated Rebalancing**: Smart contract-based portfolio rebalancing with drift detection
-- **Risk Protection**: Forte Rules Engine integration for portfolio NAV protection
-- **Multi-DEX Routing**: Optimal swap execution across PancakeSwap V2/V3
-- **Gasless Transactions**: Sponsored transactions through Alchemy paymaster
-
-## 🏗️ Architecture
-
-### Monorepo Structure
+## Project Structure
 
 ```
 packages/
-├── smart-contracts/          # Core smart contract modules
+├── smart-contracts/          # Smart contracts
 │   ├── src/
-│   │   ├── PortfolioManagerExecutor.sol    # Main portfolio management module
-│   │   ├── RulesEngineClientCustom.sol     # Generated Forte Rules Engine modifiers
+│   │   ├── PortfolioManagerExecutor.sol    # Main portfolio manager
+│   │   ├── RulesEngineClientCustom.sol     # Forte rules integration
 │   │   └── ...
-│   ├── script/               # Deployment and utility scripts
-│   ├── test/                 # Contract tests
-│   └── policy.json          # Forte Rules Engine policy configuration
-├── frontend/                 # React.js web application
-│   ├── src/
-│   │   ├── App.tsx          # Main application with portfolio creation interface
-│   │   ├── wagmi.ts         # Web3 configuration
-│   │   └── ...
-│   └── package.json
-└── package.json             # Root workspace configuration
+│   ├── script/               # Deploy scripts
+│   ├── test/                 # Tests
+│   └── policy.json          # Forte rules policy
+└── frontend/                 # React app
+    ├── src/App.tsx          # Portfolio creation UI
+    └── ...
 ```
 
-## 🚀 Core Components
+## Key Contracts
 
-### Smart Contracts
+### [PortfolioManagerExecutor.sol](./packages/smart-contracts/src/PortfolioManagerExecutor.sol)
+ERC-7579 executor module with:
+- Portfolio configuration and target allocations
+- Drift-based rebalancing logic
+- **Supra Oracle** integration for price feeds (also intended for automation triggers)
+- PancakeSwap V2/V3 routing
+- **Forte Rules Engine** integration for portfolio protection
 
-#### [PortfolioManagerExecutor.sol](./packages/smart-contracts/src/PortfolioManagerExecutor.sol)
-The core ERC-7579 executor module that provides:
-- **Portfolio Configuration**: Multi-asset portfolio setup with target allocations
-- **Automated Rebalancing**: Drift-based rebalancing with configurable thresholds
-- **Price Feed Integration**: Supra Oracle integration for real-time asset pricing
-- **Optimal Routing**: Multi-hop swap routing across PancakeSwap V2/V3
-- **Risk Management**: Integration with Forte Rules Engine for portfolio protection
+### [RulesEngineClientCustom.sol](./packages/smart-contracts/src/RulesEngineClientCustom.sol)
+**Forte Rules Engine** modifiers generated from [policy.json](./packages/smart-contracts/policy.json):
+- Portfolio value protection during rebalancing
+- Rebalancing frequency limits
+- Drift threshold enforcement
 
-#### [RulesEngineClientCustom.sol](./packages/smart-contracts/src/RulesEngineClientCustom.sol)
-Generated Forte Rules Engine modifiers based on [policy.json](./packages/smart-contracts/policy.json):
-- **Portfolio NAV Protection**: Ensures portfolio value changes stay within drift thresholds
-- **Rebalancing Frequency Control**: Monitors and adjusts for excessive rebalancing
-- **Emergency Protections**: Automatic safeguards against significant value loss
+## Deployed Contracts
 
-### Frontend Application
+**BNB Chain Testnet:**
+| Contract | Address |
+|----------|---------|
+| PortfolioManagerExecutor | `0x216F8088DF93940e6117561d5b293F5151c6329c` |
+| Safe Account (Example) | `0x3fE9d4BE344fD83AEFB818af23F35c61c0003FF5` |
 
-- **Portfolio Creation Interface**: User-friendly interface for creating modular smart accounts
-- **Real-time Analytics**: Live portfolio performance and drift monitoring
-- **Transaction Management**: Gasless transaction execution through account abstraction
-- **Multi-chain Support**: Built for BSC testnet with extensible chain configuration
-
-## 🌐 Deployed Contracts
-
-### BSC Testnet
-
-| Contract | Address | Explorer |
-|----------|---------|----------|
-| PortfolioManagerExecutor | `0x216F8088DF93940e6117561d5b293F5151c6329c` | [View on BSCScan](https://testnet.bscscan.com/address/0x216F8088DF93940e6117561d5b293F5151c6329c) |
-| Safe Account (Example) | `0x3fE9d4BE344fD83AEFB818af23F35c61c0003FF5` | [View on BSCScan](https://testnet.bscscan.com/address/0x3fE9d4BE344fD83AEFB818af23F35c61c0003FF5) |
-
-## 🔧 Development
-
-### Prerequisites
-
-- Node.js 18+
-- pnpm
-- Foundry (for smart contracts)
-
-### Installation
+## Setup
 
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd simplifai
-
 # Install dependencies
 pnpm install
 ```
 
-### Smart Contracts
+## Commands
 
+**Smart Contracts:**
 ```bash
-# Navigate to smart contracts package
 cd packages/smart-contracts
 
-# Compile contracts
+# Compile and test
 forge build
-
-# Run tests
 forge test
 
-# Run tests with verbosity
-forge test -vvv
-
-# Deploy to BSC testnet (requires .env configuration)
-forge script script/DeployModule.s.sol --rpc-url $BSC_TESTNET_RPC --broadcast --verify
-
-# Create Safe account
-forge script script/CreateSafeAccount.s.sol --rpc-url $BSC_TESTNET_RPC --broadcast
+# Deploy to BSC testnet
+forge script script/DeployModule.s.sol --rpc-url $BSC_TESTNET_RPC --broadcast
 ```
 
-### Frontend
-
+**Frontend:**
 ```bash
-# Navigate to frontend package
 cd packages/frontend
 
-# Start development server
+# Run the app
 pnpm dev
-
-# Build for production
-pnpm build
-
-# Lint code
-pnpm lint
 ```
 
-### Environment Configuration
+## Implementation Status
 
-Create `.env` files in the appropriate packages:
+✅ **Smart Contracts**: Successfully deployed to **BNB Chain** testnet
+- PortfolioManagerExecutor with **Supra Oracle** integration
+- **Forte Rules Engine** policy generation and integration
+- Safe account creation scripts
 
-**packages/smart-contracts/.env:**
-```env
-PRIVATE_KEY=your_private_key_here
-BSC_TESTNET_RPC=https://data-seed-prebsc-1-s1.binance.org:8545
-BSCSCAN_API_KEY=your_bscscan_api_key
-```
+❌ **Frontend Integration**: Encountered bundler issues with Account Abstraction on testnets
+- Smart account creation UI implemented
+- Bundler/paymaster integration attempted but failed due to testnet infrastructure limitations
+- Contracts are deployed but frontend cannot interact with AA infrastructure
 
-**packages/frontend/.env:**
-```env
-VITE_ALCHEMY_API_KEY=your_alchemy_api_key
-VITE_WALLETCONNECT_PROJECT_ID=your_walletconnect_project_id
-```
+## Intended Flow
 
-## 🧪 Testing
+1. Create Safe smart account with portfolio module
+2. Set target allocations (e.g., 50% BNB, 30% CAKE, 20% USDT)
+3. **Supra Oracle** provides price feeds and automation triggers
+4. Contract rebalances when portfolio drifts from targets
+5. **Forte Rules Engine** protects portfolio value during trades
+6. All on **BNB Chain** with gasless transactions
 
-### Smart Contract Tests
+## Tech Stack
 
-```bash
-cd packages/smart-contracts
+- **Blockchain**: BNB Chain testnet
+- **Oracles**: Supra (price feeds + intended automation)
+- **Risk Management**: Forte Rules Engine
+- **Smart Contracts**: Solidity, Foundry, ERC-7579
+- **Frontend**: React, TypeScript, Wagmi
+- **Account Abstraction**: Safe, Rhinestone (deployment issues on testnet)
 
-# Run all tests
-forge test
-
-# Run specific test file
-forge test --match-path test/PortfolioManagerExecutor.t.sol
-
-# Run tests with gas reporting
-forge test --gas-report
-
-# Run production-ready tests
-forge test --match-path test/PortfolioManagerExecutor.Production.t.sol
-```
-
-### Frontend Tests
-
-```bash
-cd packages/frontend
-
-# Run component tests (when implemented)
-pnpm test
-
-# Type checking
-pnpm build
-```
-
-## 🔐 Security Features
-
-### Forte Rules Engine Integration
-
-The project integrates with Forte Rules Engine for advanced portfolio protection:
-
-- **Drift Monitoring**: Tracks portfolio value changes and enforces maximum drift thresholds
-- **Rebalancing Controls**: Prevents excessive rebalancing frequency
-- **NAV Protection**: Ensures portfolio value stability during operations
-- **Policy-Based Governance**: Rule definitions in [policy.json](./packages/smart-contracts/policy.json)
-
-### Account Abstraction Security
-
-- **Modular Architecture**: ERC-7579 compliant modular smart accounts
-- **Multi-signature Support**: Safe integration for enhanced security
-- **Gasless Transactions**: Sponsored transactions reduce user friction
-- **Upgradeable Modules**: Secure module installation and management
-
-## 📈 Features
-
-### Portfolio Management
-- Multi-asset portfolio creation and management
-- Automated rebalancing based on drift thresholds
-- Real-time portfolio value calculation
-- Historical performance tracking
-
-### Trading & Execution
-- Optimal routing across PancakeSwap V2/V3
-- Slippage protection and MEV resistance
-- Gas-optimized swap execution
-- Multi-hop routing through intermediate tokens
-
-### Risk Management
-- Portfolio NAV protection policies
-- Rebalancing frequency controls
-- Emergency stop mechanisms
-- Drift-based risk assessment
-
-### User Experience
-- Gasless transaction execution
-- One-click portfolio creation
-- Real-time portfolio analytics
-- Cross-chain compatibility (extensible)
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🔗 Links
-
-- [PancakeSwap](https://pancakeswap.finance/) - DEX integration
-- [Safe](https://safe.global/) - Account abstraction infrastructure
-- [Forte Rules Engine](https://www.thrackle.io/) - Risk management and governance
-- [Supra Oracles](https://supra.com/) - Price feed integration
-- [Alchemy](https://www.alchemy.com/) - Infrastructure and paymaster services
-
-## 🏆 Built For
-
-Permissionless IV Hackathon - Redefining decentralized portfolio management through innovative Account Abstraction and AI-powered analytics.
+**Hackathon Project - Permissionless IV**

@@ -25,7 +25,12 @@
     "test:optimized": "pnpm run build:optimized && FOUNDRY_PROFILE=test-optimized forge test"
   },
   "dependencies": {
-    "@rhinestone/modulekit": "^0.5.1"
+    "@rhinestone/modulekit": "^0.5.1",
+    "@rhinestone/registry": "github:rhinestonewtf/registry#v1.0",
+    "@rhinestonewtf/safe7579": "github:rhinestonewtf/safe7579",
+    "@safe-global/safe-contracts": "^1.4.1",
+    "erc7579": "github:erc7579/erc7579-implementation",
+    "@thrackle-io/forte-rules-engine": "0.0.3-rc.2"
   },
   "files": [
     "src",

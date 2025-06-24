@@ -14,3 +14,9 @@ solady/=node_modules/solady/src/
 solarray/=node_modules/solarray/src/
 @prb/math/=node_modules/@prb/math/src/
 ExcessivelySafeCall/=node_modules/excessively-safe-call/src/
+
+@safe-global/=node_modules/@safe-global/
+registry/=node_modules/@rhinestone/registry/src/
+@rhinestonewtf/safe7579=node_modules/@rhinestonewtf/safe7579/src
+@thrackle-io/forte-rules-engine/=node_modules/@thrackle-io/forte-rules-engine
+erc7579/=node_modules/erc7579/src/

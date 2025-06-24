@@ -29,8 +29,9 @@
     "@rhinestone/registry": "github:rhinestonewtf/registry#v1.0",
     "@rhinestonewtf/safe7579": "github:rhinestonewtf/safe7579",
     "@safe-global/safe-contracts": "^1.4.1",
-    "erc7579": "github:erc7579/erc7579-implementation",
-    "@thrackle-io/forte-rules-engine": "0.0.3-rc.2"
+    "@thrackle-io/forte-rules-engine": "0.0.3-rc.2",
+    "@thrackle-io/forte-rules-engine-sdk": "0.0.4-rc.2",
+    "erc7579": "github:erc7579/erc7579-implementation"
   },
   "files": [
     "src",

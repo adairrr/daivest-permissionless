@@ -1,0 +1,92 @@
+{
+  "Policy": "Portfolio NAV Protection Policy",
+  "PolicyType": "open",
+  "ForeignCalls": [
+    {
+      "name": "GetPortfolioValueBefore",
+      "address": "0xB9EdA6A7729D57a9fdd50443b1b70cDa01a4a6E3",
+      "function": "calculatePortfolioValue(address)",
+      "returnType": "uint256",
+      "valuesToPass": "0"
+    }
+  ],
+  "Trackers": [
+    {
+      "name": "portfolioValueBefore",
+      "type": "uint256",
+      "initialValue": 0
+    },
+    {
+      "name": "maxAllowedDrift",
+      "type": "uint256",
+      "initialValue": 500
+    },
+    {
+      "name": "rebalanceCount",
+      "type": "uint256",
+      "initialValue": 0
+    }
+  ],
+  "Rules": [
+    {
+      "condition": "TR:portfolioValueBefore == 0",
+      "positiveEffects": ["TRU:portfolioValueBefore = FC:GetPortfolioValueBefore"],
+      "negativeEffects": [],
+      "callingFunction": "executePortfolioRebalancing(address)",
+      "encodedValues": "address smartAccount"
+    },
+    {
+      "condition": "TR:portfolioValueBefore > 0",
+      "positiveEffects": ["emit Portfolio value captured before rebalancing"],
+      "negativeEffects": [],
+      "callingFunction": "executePortfolioRebalancing(address)",
+      "encodedValues": "address smartAccount"
+    },
+    {
+      "condition": "TR:portfolioValueBefore > 0 AND portfolioValueAfter > 0",
+      "positiveEffects": [
+        "TRU:rebalanceCount += 1",
+        "emit Portfolio rebalancing completed successfully"
+      ],
+      "negativeEffects": [
+        "revert(Portfolio value validation failed)"
+      ],
+      "callingFunction": "_executeRebalance(address,RebalanceAction[])",
+      "encodedValues": "address smartAccount, RebalanceAction[] actions, uint256 portfolioValueAfter"
+    },
+    {
+      "condition": "(portfolioValueAfter * 10000) >= (TR:portfolioValueBefore * (10000 - TR:maxAllowedDrift)) AND (portfolioValueAfter * 10000) <= (TR:portfolioValueBefore * (10000 + TR:maxAllowedDrift))",
+      "positiveEffects": [
+        "emit NAV protection check passed",
+        "TRU:portfolioValueBefore = portfolioValueAfter"
+      ],
+      "negativeEffects": [
+        "revert(Portfolio value drift exceeds maximum allowed threshold)"
+      ],
+      "callingFunction": "_executeRebalance(address,RebalanceAction[])",
+      "encodedValues": "address smartAccount, RebalanceAction[] actions, uint256 portfolioValueAfter"
+    },
+    {
+      "condition": "newMaxDrift <= 2000 AND newMaxDrift >= 50",
+      "positiveEffects": [
+        "TRU:maxAllowedDrift = newMaxDrift",
+        "emit Maximum drift threshold updated"
+      ],
+      "negativeEffects": [
+        "revert(Invalid drift threshold must be between 50 and 2000 basis points)"
+      ],
+      "callingFunction": "updateMaxDriftThreshold(uint256)",
+      "encodedValues": "uint256 newMaxDrift"
+    },
+    {
+      "condition": "TR:rebalanceCount >= 10",
+      "positiveEffects": [
+        "emit Warning: High rebalancing frequency detected",
+        "TRU:maxAllowedDrift = 200"
+      ],
+      "negativeEffects": [],
+      "callingFunction": "executePortfolioRebalancing(address)",
+      "encodedValues": "address smartAccount"
+    }
+  ]
+}

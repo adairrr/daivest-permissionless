@@ -16,6 +16,9 @@ dependencies:
   '@rainbow-me/rainbowkit':
     specifier: ^2.2.8
     version: 2.2.8(@tanstack/react-query@5.45.1)(@types/react@18.3.1)(react-dom@18.3.1)(react@18.3.1)(typescript@5.4.5)(viem@2.31.4)(wagmi@2.15.6)
+  '@rhinestone/module-sdk':
+    specifier: ^0.2.10
+    version: 0.2.10(viem@2.31.4)
   '@rhinestone/sdk':
     specifier: ^0.11.3
     version: 0.11.3(viem@2.31.4)
@@ -31,6 +34,9 @@ dependencies:
   lucide-react:
     specifier: ^0.522.0
     version: 0.522.0(react@18.3.1)
+  permissionless:
+    specifier: ^0.2.47
+    version: 0.2.47(viem@2.31.4)
   react:
     specifier: ^18.3.1
     version: 18.3.1
@@ -2163,6 +2169,16 @@ packages:
       - uploadthing
       - utf-8-validate
       - zod
+    dev: false
+
+  /@rhinestone/module-sdk@0.2.10(viem@2.31.4):
+    resolution: {integrity: sha512-egf3L5ziIjP5DU4n8FB7na7r7x5HsisIwXFYd70PFR3l3Cs7fY7qlFyB42S7J9npw7OBsJ7RHVDgw0yA9gvWFQ==}
+    peerDependencies:
+      viem: ^2.0.0
+    dependencies:
+      solady: 0.0.235
+      tslib: 2.8.1
+      viem: 2.31.4(typescript@5.4.5)(zod@3.25.67)
     dev: false
 
   /@rhinestone/sdk@0.11.3(viem@2.31.4):
@@ -5624,6 +5640,18 @@ packages:
     resolution: {integrity: sha512-whLdWMYL2TwI08hn8/ZqAbrVemu0LNaNNJZX73O6qaIdCTfXutsLhMkjdENX0qhsQ9uIimo4/aQOmXkoon2nDQ==}
     dev: true
 
+  /permissionless@0.2.47(viem@2.31.4):
+    resolution: {integrity: sha512-/Y+2SK+OGrPJuVZ9RcDDBL+U3wGnw3PByc610zvk2G1h//rRez3YZ9CyuMiOf7MpTh53XxmQeKsqKPna0Ilciw==}
+    peerDependencies:
+      ox: 0.6.7
+      viem: ^2.28.1
+    peerDependenciesMeta:
+      ox:
+        optional: true
+    dependencies:
+      viem: 2.31.4(typescript@5.4.5)(zod@3.25.67)
+    dev: false
+
   /picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
@@ -6267,6 +6295,10 @@ packages:
       debug: 4.3.7
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /solady@0.0.235:
+    resolution: {integrity: sha512-JUEXLDG7ag3HmqUnrDG7ilhafH6R9bFPpwV63O2kH4UbnS2+gRGEOqqy4k01O7tHjo3MWkDD0cpG+UY9pjy/fQ==}
     dev: false
 
   /sonic-boom@2.8.0:
